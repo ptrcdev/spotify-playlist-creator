@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* hides scroll bar */
+*::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+.App::before {
+  content: "";
+  background-color: lightgreen;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.85;
+  background-image: url('./Spotify.jpeg');
+}
+
+.app-container {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-items: center;
+  font-weight: bolder;
+}
+
+.app-container h1 {
+  font-weight: 900;
+  background-color:black;
+  align-self: center;
+  color: white;
+  padding: 20px 100% 20px 100%;
+  overflow: hidden;
+}
+
+span {
+  color: green;
+}
+
+.results-container {
+  display: flex;
+  gap: 150px;
+  margin-bottom: 100px;
+}

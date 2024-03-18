@@ -1,0 +1,25 @@
+.search-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 350px;
+    justify-content: center;
+}
+
+.search-bar-container input {
+    padding: 20px;
+    border: 1px solid green;
+    border-radius: 50px;
+    width: 230px;
+    margin-bottom: 20px;
+}
+
+.search-button {
+    padding: 10px;
+    width: 150px;
+    background-color: green;
+    border: 0.5px solid lightgreen;
+    border-radius: 50px;
+    font-size: 20px;
+    color: whitesmoke;
+}
