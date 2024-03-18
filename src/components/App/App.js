@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   const search = useCallback( (song) => {
-      Spotify.searchSong(song).then(setSearchResults);
+      Spotify.searchSong(song).then((setSearchResults));
   }, []);
 
   const addTrack = useCallback((track) => {

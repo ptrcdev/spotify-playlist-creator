@@ -3,7 +3,6 @@ import './SearchBar.css';
 
 function SearchBar(props) {
     const [userInput, setUserInput] = useState("");
-
     const handleOnChange = useCallback((event) => {
         setUserInput(event.target.value);
     }, []);
