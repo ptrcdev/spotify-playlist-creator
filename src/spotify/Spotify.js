@@ -70,7 +70,7 @@ const Spotify = {
         } catch (error) {console.log(error);}
     },
     // save to spotify
-    async saveToSpotify() {
+    async saveToSpotify(playlist) {
         try {
             const userId = await this.getUserId();
 
@@ -80,16 +80,37 @@ const Spotify = {
                     Authorization: `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'
                 },
-                data: {
-                    name: "New playlist",
-                    "description": "created with the api",
-                    "public": false
-                }
+                body: JSON.stringify({
+                    name: playlist.playlistName,
+                    description: "",
+                    public: true
+                })
             });
 
             if (!response.ok) throw new Error(`Unable to fetch user playlists. Status: ${response.status}`);
 
-            console.log(await response.json());
+            const data = await response.json();
+            const playlist_id = data.id;
+
+            // add tracks to playlist 
+            const addToPlaylistEndpoint = `https://api.spotify.com/v1/playlists/${playlist_id}/tracks`;
+            // POST
+            const response_playlist = await fetch(addToPlaylistEndpoint, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {
+                        uris: playlist.tracks
+                    }
+                )
+            });
+
+            if (!response_playlist.ok) throw new Error(`Unable to save playlist. Status: ${response_playlist.status}`);
+
+            return
             
             
         } catch (error) {

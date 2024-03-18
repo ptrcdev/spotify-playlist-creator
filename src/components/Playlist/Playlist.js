@@ -27,7 +27,7 @@ function Playlist(props) {
         <div style={{ height: 700, backgroundColor: 'transparent', width: 'fit-content', padding: 30, border: '2px solid whitesmoke'}}>
             <input type="text" placeholder="New Playlist" value={props.playlistName} onChange={props.onChangeName} style={newPlaylistNameInputStyle}  />
             <Tracklist tracks={props.tracks} isRemovable={true} onRemove={props.onRemove}/>
-            { props.tracks.length > 0 ? <button className="add-to-spotify" onClick={props.saveToSpotify} style={addToSpotifyButtonStyle}>Save to Spotify</button> : null}
+            { props.tracks.length > 0 ? <button className="add-to-spotify" onClick={() => props.saveToSpotify({playlistName: props.playlistName, tracks: props.tracks})} style={addToSpotifyButtonStyle}>Save to Spotify</button> : null}
         </div>
     )
 }

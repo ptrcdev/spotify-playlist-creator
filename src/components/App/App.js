@@ -37,12 +37,13 @@ function App() {
     setPlaylistName(event.target.value);
   }
 
-  const handleSave = () => {
+  const handleSave = (obj) => {
     // create new playlist with all them tracks
     // save it to spotify
-
-    console.log("in progres...");
-    Spotify.saveToSpotify();
+    
+    obj.tracks = obj.tracks.map((track) => track.uri);
+    console.log(obj);
+    Spotify.saveToSpotify(obj);
   }
 
   return (
@@ -62,10 +63,3 @@ function App() {
 }
 
 export default App;
-//TODO:
-/**
- *  - add Save to Spotify button and its functionality
- * 
- * 
- * 
- */
